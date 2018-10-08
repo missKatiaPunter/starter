@@ -2,16 +2,19 @@
 'use strict';
 
 var test = require('tape');
+var primes = require('./primes');
 
-test('Demonstrate `console.error()` for debugging', function (assert) {
+test('Demonstrate ok', function (t) {
 
-  console.log('This may not be seen.');
+  t.ok([], 'Does');
 
-  console.error('But this will! =)');
+  t.end();
 
-  assert.ok('Yay!',
-    'It is possible to debug tests using `console.error()`.');
+});
 
-  assert.end();
-
+test('Demonstrate prime', function (t) {
+  t.plan(3);
+  t.ok(primes.isPrime(2), '2 is a prime number');
+  t.notOk(primes.isPrime(4), '4 is not a prime number');
+  t.end();
 });
